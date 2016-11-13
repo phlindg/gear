@@ -1,0 +1,22 @@
+Man tar ut HTMLen som man inte vill skriva flera gånger. Sen kan man använda "ng-include" = "'filnamn.html'" <-- notera "''"
+Detta fungerrar, men det är bättre att göra en directive.
+
+"Template - expanding Directives" - Man definierar en "html" tag. denna kan använda sig av controller logic, if needed.
+
+Det kan också användas till andra saker. GOOGal.
+app.directive("htmlTag", function(){ <-- htmlTag = html-tag
+	return{
+		restrict: 'E', <--- definiera type
+		templateUrl: 'filnamn.html'
+	}
+})
+
+Hur laddar man upp?
+
+
+
+
+Bra länkar:
+codeschool angular!
+youtube - firebase
+docs.angularjs.org

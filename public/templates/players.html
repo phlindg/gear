@@ -1,0 +1,23 @@
+<div ng-controller="PlayerCTRL as ctrl" class="players">
+	
+	<p>
+	Sort by:
+	<select ng-model="orderBy">
+	<option>name</option>
+	<option selected>mouse</option>
+	<!--option>timestamp</option-->
+	</select>
+	</p>
+
+	<p> Search: <input ng-model="searchText"></p>
+
+	<ul class="playerBox">
+	<li ng-repeat = "player in players | orderBy:orderBy | filter:searchText">
+	<a ui-sref-active="active" ui-sref = ".player({ playerName: player.name})">{{player.name}}</a><br>
+	<img src="{{player.p_img}}"/>
+	<a href="" ng-click="deletePlayer(player)">X</a>
+	</li>
+	</ul>
+	<ui-view></ui-view>
+
+</div>

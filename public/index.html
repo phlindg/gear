@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gear-Wiki</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <!--ui route!!!-->
+    <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
+
+    <script src="app.js"></script>
+
+  </head>
+  <body ng-app="app">
+  <section ng-controller = "TabCTRL as tab">
+  <ul class="nav nav-pills">
+  <li ng-class="{active: tab.isSet(1)}"> <a href="#/home" ui-sref="/" ng-click="tab.setTab(1)">Home</a></li>
+  <li ng-class="{active: tab.isSet(2)}"> <a href="#/players" ui-sref="/players" ng-click="tab.setTab(2)">Players</a></li>
+  <li ng-class="{active: tab.isSet(3)}"> <a href ng-click="tab.setTab(3)">Team Search</a></li>
+  <li ng-class="{active: tab.isSet(4)}"> <a href ng-click="tab.setTab(4)">Leaderboard</a></li>
+  <li ng-class="{active: tab.isSet(5)}"> <a href ng-click="tab.setTab(5)">Player Feed</a></li>
+  <li ng-class="{active: tab.isSet(6)}"> <a href ng-click="tab.setTab(6)">Contact</a></li>
+  <li ng-class="{active: tab.isSet(7)}"> <a href ng-click="tab.setTab(7)">Homepage</a></li>
+  <li ng-class="{active: tab.isSet(8)}"> <a href ng-click="tab.setTab(8)">Upload File</a></li>
+  <li ng-class="{active: tab.isSet(9)}"> <a href ng-click="tab.setTab(9)">Upload Player</a></li>
+  <br><br><br><br><br><br>
+  <upload-player ng-show="tab.isSet(9)"></upload-player>
+  <players-view ng-show="tab.isSet(2)"></players-view>
+  <upload-file ng-show="tab.isSet(8)"></upload-file>
+
+    
+  </ul>
+  </section>
+ <div ng-controller="MainCTRL as ctrl">
+
+     </div>
+    </body>
+</html>
