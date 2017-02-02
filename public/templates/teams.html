@@ -1,0 +1,17 @@
+<div>
+	
+
+
+	<p> Search: <input ng-model="searchText"><submit></submit></p>
+
+	<ul class="teamBox">
+		<li class="teamInList" ng-repeat="team in teams | filter:searchText | orderBy:name">
+		<a ui-sref="teams.team({ teamName: team.name})">{{team.name}}</a><br>
+		
+		<img src="{{team.t_img}}"/>
+		<a ng-show="auth.$getAuth()" href="" ng-click="deleteTeam(team)">X</a>
+		</li>
+		
+	</ul>
+	<ui-view></ui-view>
+</div>

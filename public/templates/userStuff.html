@@ -1,0 +1,17 @@
+<div>
+	<form ng-submit="uc.signIn(uc.email, uc.pw)">
+
+		EMAIL: <input type="email" ng-model="uc.email">
+		PW: <input type="password" ng-model="uc.pw">
+		<input type="submit" value="LOGIN">
+	</form>
+	<form ng-submit="uc.signOut()">
+		<input type="submit" value="LOGOUT">
+
+	</form>
+	{{uc.user.email}}
+
+	<button ng-show="uc.auth.$getAuth()" ng-submit="uc.go()">GO</button>
+	awd
+
+</div>

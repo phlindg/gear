@@ -1,14 +1,19 @@
+<div>
 
-<div ng-controller="PlayerCTRL as ctrl">
-	
-	
 
-	<form ng-submit="addPlayer()">
-	NAME: <input type="text" ng-model="player.name"><br>
-	MOUSE: <input type="text" ng-model="player.mouse"><br>
-	IMAGE URL: <input type="url" ng-model="player.p_img"><br>
-	<input type="submit", value="Add Player">
-	</form>
+    <form ng-submit="addPlayer()">
+        NAME: <input type="text" ng-model="player.name"><br>
+        TEAM: <select ng-options="team.name for team in teams" ng-model="player.team"></select><br>
+        MOUSE: <input type="text" ng-model="player.mouse"><br>
+        KEYBOARD URL: <input type="url" ng-model="player.keyboard"><br>
+        KEYBOARD LINK TEXT: <input type="text" ng-model="player.keyboardlinktext"><br>
+      
+        KEYBOARD TEXT: <input type="text" ng-model="player.keyboardtext"><br>
+        Game: <select ng-model="player.game" ng-options="game.name for game in games" ></select><br>
+        IMAGE URL: <input type="url" ng-model="player.p_img"><br>
+        TAGS: <input type="text" ng-model="player.tags"><br>
+        <input type="submit" , value="Add Player">
+    </form>
 </div>
 
 

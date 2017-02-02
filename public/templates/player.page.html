@@ -1,0 +1,41 @@
+<div class="playerpage">
+
+    Name:
+    <p class="playerInfoText">{{pp.player.name}}</p> <br>
+    Game:
+    <p class="playerInfoText">{{pp.player.game.name}}</p><br>
+    Mouse:
+    <p class="playerInfoText">{{pp.player.mouse}}</p> <br>
+    Keyboard:
+    <p class="playerInfoText">{{pp.player.keyboard}}</p> <br>
+   	
+
+	<blockquote class="embedly-card" data-card-key="9d77666c8bd848d3a2798d2c40ab96aa"><h4><a href="{{pp.player.keyboard}}">Keyboard Link Text</a></h4><p>Keyboard desc</p></blockquote>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+
+    <p class="playerInfoText" ng-show="pp.player.team">TEAM: {{pp.player.team.name}}</p> <br>
+    <form ng-submit="pp.changeTeam(pp.team, pp.player)">
+        <select ng-show="pp.auth.$getAuth()" ng-model="pp.team" ng-options="team.name for team in pp.teams"></select>
+        <input ng-show="pp.auth.$getAuth()" type="submit" value="Change team">
+    </form>
+    <p ng-show="pp.auth.$getAuth()">Change Tags:</p>
+    <form ng-submit="pp.changeTag(pp.tags, pp.player)">
+    	<input ng-show="pp.auth.$getAuth()" ng-model="pp.tags" type="text">
+    	<input ng-show="pp.auth.$getAuth()" type="submit">
+    </form>
+    <p ng-show="pp.auth.$getAuth()">Change Mouse:</p>
+    <form ng-submit="pp.changeMouse(pp.mouse, pp.player)">
+    	<input ng-show="pp.auth.$getAuth()" ng-model="pp.mouse" type="text">
+    	<input ng-show="pp.auth.$getAuth()" type="submit">
+    </form>
+	<p ng-show="pp.auth.$getAuth()">Change Keyboard:</p>
+    <form ng-submit="pp.changeKeyboard(pp.keyboard, pp.player)">
+
+    	<input ng-show="pp.auth.$getAuth()" ng-model="pp.keyboard" type="url">
+    	<input ng-show="pp.auth.$getAuth()" type="submit">
+    </form>
+
+    <br>
+        <img class="playerInfoImg" src="{{pp.player.p_img}}">
+
+</div>

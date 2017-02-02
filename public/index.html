@@ -1,45 +1,81 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
+<head>
+
     <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
     <title>Gear-Wiki</title>
+
+    <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <!-- AngularJS -->
+
+    <!-- PURE STUFF -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    .w3-sidenav a,.w3-sidenav h4 {font-weight:bold}
+    </style>
+
+
+    <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="static/main.css">
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
     <!--ui route!!!-->
-    <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="//unpkg.com/angular-ui-router@1.0.0-beta.1/release/angular-ui-router.js"></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
 
     <script src="app.js"></script>
 
-  </head>
-  <body ng-app="app">
-  <section ng-controller = "TabCTRL as tab">
-  <ul class="nav nav-pills">
-  <li ng-class="{active: tab.isSet(1)}"> <a href="#/home" ui-sref="/" ng-click="tab.setTab(1)">Home</a></li>
-  <li ng-class="{active: tab.isSet(2)}"> <a href="#/players" ui-sref="/players" ng-click="tab.setTab(2)">Players</a></li>
-  <li ng-class="{active: tab.isSet(3)}"> <a href ng-click="tab.setTab(3)">Team Search</a></li>
-  <li ng-class="{active: tab.isSet(4)}"> <a href ng-click="tab.setTab(4)">Leaderboard</a></li>
-  <li ng-class="{active: tab.isSet(5)}"> <a href ng-click="tab.setTab(5)">Player Feed</a></li>
-  <li ng-class="{active: tab.isSet(6)}"> <a href ng-click="tab.setTab(6)">Contact</a></li>
-  <li ng-class="{active: tab.isSet(7)}"> <a href ng-click="tab.setTab(7)">Homepage</a></li>
-  <li ng-class="{active: tab.isSet(8)}"> <a href ng-click="tab.setTab(8)">Upload File</a></li>
-  <li ng-class="{active: tab.isSet(9)}"> <a href ng-click="tab.setTab(9)">Upload Player</a></li>
-  <br><br><br><br><br><br>
-  <upload-player ng-show="tab.isSet(9)"></upload-player>
-  <players-view ng-show="tab.isSet(2)"></players-view>
-  <upload-file ng-show="tab.isSet(8)"></upload-file>
+</head>
+<body class="w3-light-grey w3-content" style="max-width:1600px" ng-app="app">
+<section ng-controller="TabCTRL as tab">
+    <ul class="nav nav-pills">
+        <li ng-class="{active: isSet(1)}"><a href ui-sref="home"  ng-click="setTab(1)">Home</a></li>
+        <li ng-class="{active: isSet(2)}"><a href ui-sref="players" ng-click="setTab(2)">Players</a></li>
+        <li ng-class="{active: isSet(3)}"><a href ui-sref="teams" ng-click="setTab(3)">Team Search</a></li>
+        <li ng-class="{active: isSet(4)}"><a href ui-sref="leaderboard" ng-click="setTab(4)">Leaderboard</a></li>
+        <li ng-class="{active: isSet(5)}"><a href ng-click="setTab(5)">Player Feed</a></li>
 
-    
-  </ul>
-  </section>
- <div ng-controller="MainCTRL as ctrl">
+        <li ng-show="auth.$getAuth()" ng-class="{active: isSet(6)}"><a href ui-sref="fileupload" ng-click="setTab(6)">Upload File</a></li>
+        <li ng-show="auth.$getAuth()" ng-class="{active: isSet(7)}"><a href ui-sref="playerupload" ng-click="setTab(7)">Upload Player</a></li>
+        <li ng-show="auth.$getAuth()" ng-class="{active: isSet(8)}"><a href ui-sref="teamupload" ng-click="setTab(8)">Upload Team</a></li>
+        <li ng-show="auth.$getAuth()" ng-class="{active: isSet(9)}"><a href ui-sref="gameupload" ng-click="setTab(9)">Upload Game or Sport</a></li>
+        <br><br><br><br><br><br>
+        <!--upload-player ng-show="tab.isSet(9)"></upload-player>
+        <team-upload ng-show="tab.isSet(10)"></team-upload>
+       
+        <players ng-show="tab.isSet(2)"></players>
+        <player ng-show="tab.isSet(2)"></player>
+        <teams ng-show="tab.isSet(3)"></teams>
+        <team ng-show="tab.isSet(3)"></team-->
+        <div class="twitter">
+        <a class="twitter-timeline" data-width="220" data-theme="light" href="https://twitter.com/phlindg">Tweets by phlindg</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        </div>
+        <!--upload-file ng-show="tab.isSet(8)"></upload-file-->
+<a href ui-sref="userstuff">LOGIN</a>
+<ui-view></ui-view>
+    </ul>
+</section>
 
-     </div>
-    </body>
+
+
+
+
+
+</body>
 </html>

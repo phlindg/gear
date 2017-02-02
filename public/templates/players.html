@@ -1,23 +1,32 @@
-<div ng-controller="PlayerCTRL as ctrl" class="players">
+<div class="players">
+
+	<div>
+		<select class="w3-dropdown-hover" ng-model ="orderByGame" ng-options="game.name for game in games">
+			
+		</select>
+	</div>
 	
-	<p>
-	Sort by:
-	<select ng-model="orderBy">
-	<option>name</option>
-	<option selected>mouse</option>
-	<!--option>timestamp</option-->
-	</select>
-	</p>
+	
+	
 
-	<p> Search: <input ng-model="searchText"></p>
+    <form ng-submit="enterPress(searchText)">
+        <p> Search: <input ng-model="searchText">
+            <submit></submit>
+        </p>
+    </form>
 
-	<ul class="playerBox">
-	<li ng-repeat = "player in players | orderBy:orderBy | filter:searchText">
-	<a ui-sref-active="active" ui-sref = ".player({ playerName: player.name})">{{player.name}}</a><br>
-	<img src="{{player.p_img}}"/>
-	<a href="" ng-click="deletePlayer(player)">X</a>
-	</li>
-	</ul>
-	<ui-view></ui-view>
+    <div class="w3-third w3-container w3-margin-bottom">
+        <ul class="playerBox">
+            <li class="playerInList" ng-repeat="player in players | filter:{'game': {'name': orderByGame.name}} | filter: searchText" >
+            {{player.game.name}}
+                <a ui-sref-active="active" ui-sref="players.player({ playerName: player.name.split(' ').join('+')})">{{player.name}}</a>
+                <img class="w3-hover-opacity" style="width:25%"  ui-sref="players.player({ playerName: player.name.split(' ').join('+')})" src="{{player.p_img}}"/>
+                <a ng-show="auth.$getAuth()" href="" ng-click="deletePlayer(player)">X</a>
+
+            </li>
+        </ul>
+    </div>
+    <ui-view></ui-view>
+
 
 </div>

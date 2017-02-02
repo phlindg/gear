@@ -1,0 +1,19 @@
+<div class="teampage">
+	NAME:
+    <p>{{tp.team.name}}</p><br>
+    
+    <p>{{tp.team.playersInTeam.name}}</p><br>
+
+    <img class="teamInfoImg" src="{{tp.team.t_img}}"/><br>
+
+    <form ng-show="tp.team">
+        PLAYERS:
+        <ul>
+            <li ng-repeat="player in tp.players | filter:tp.team.name">
+                <a ui-sref="players.player({playerName: player.name})" ng-click="tp.changeState(player.name)">{{player.name}}</a>
+            </li>
+        </ul>
+        <br>
+
+    </form>
+</div>
