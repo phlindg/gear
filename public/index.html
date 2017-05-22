@@ -38,7 +38,10 @@
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
 
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/uploads.js"></script>
+    <script src="js/states.js"></script>
+    <script src="js/components.js"></script>
 
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px" ng-app="app">
@@ -54,6 +57,7 @@
         <li ng-show="auth.$getAuth()" ng-class="{active: isSet(7)}"><a href ui-sref="playerupload" ng-click="setTab(7)">Upload Player</a></li>
         <li ng-show="auth.$getAuth()" ng-class="{active: isSet(8)}"><a href ui-sref="teamupload" ng-click="setTab(8)">Upload Team</a></li>
         <li ng-show="auth.$getAuth()" ng-class="{active: isSet(9)}"><a href ui-sref="gameupload" ng-click="setTab(9)">Upload Game or Sport</a></li>
+        <li ng-show="auth.$getAuth()" ng-class="{active: isSet(10)}"><a href ui-sref="gearupload" ng-click="setTab(10)">Upload Gear</a></li>
         <br><br><br><br><br><br>
         <!--upload-player ng-show="tab.isSet(9)"></upload-player>
         <team-upload ng-show="tab.isSet(10)"></team-upload>
@@ -63,7 +67,7 @@
         <teams ng-show="tab.isSet(3)"></teams>
         <team ng-show="tab.isSet(3)"></team-->
         <div class="twitter">
-        <a class="twitter-timeline" data-width="220" data-theme="light" href="https://twitter.com/phlindg">Tweets by phlindg</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-width="220" data-theme="light" href="https://twitter.com/gearwikinet">Tweets by phlindg</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         </div>
         <!--upload-file ng-show="tab.isSet(8)"></upload-file-->

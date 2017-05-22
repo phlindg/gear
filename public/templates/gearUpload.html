@@ -1,8 +1,16 @@
 <div>
-	<form ng-submit = "ug.addKeyboard">
+	KEYBOARD:
+	<form ng-submit = "ug.addKeyboard()">
 		NAME: <input ng-model = "ug.keyboard.name" type="text"><br>
 		URL: <input ng-model="ug.keyboard.url" type="url"><br>
 		IMG_URL: <input ng-model="ug.keyboard.img" type="url"><br>
-		
+		<input type="submit" value="Add Keyboard">
+	</form>
+	MOUSE:
+	<form ng-submit = "ug.addMouse()">
+		NAME: <input ng-model = "ug.mouse.name" type="text"><br>
+		URL: <input ng-model="ug.mouse.url" type="url"><br>
+		IMG_URL: <input ng-model="ug.mouse.img" type="url"><br>
+		<input type="submit" value="Add Mouse">
 	</form>
 </div>
